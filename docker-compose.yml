@@ -1,0 +1,18 @@
+# Three separate MongoDB servers = one per machine (the "distributed" part)
+services:
+  mongo-cnc:
+    image: mongo:7
+    ports: ["27020:27017"]
+    volumes: [cnc-data:/data/db]
+  mongo-press:
+    image: mongo:7
+    ports: ["27018:27017"]
+    volumes: [press-data:/data/db]
+  mongo-conveyor:
+    image: mongo:7
+    ports: ["27019:27017"]
+    volumes: [conveyor-data:/data/db]
+volumes:
+  cnc-data:
+  press-data:
+  conveyor-data:
